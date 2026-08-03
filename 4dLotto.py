@@ -49,81 +49,33 @@ for number in number_of_winning_numbers:
     if repeated > 2:
         print(f"the number {number} repeated {repeated}")
         
-#### counting repeating numbers by possitions ###
+#### counting repeating numbers by positions ###
 
-first_position_winning_number = {}
-second_position_winning_number = {}
-third_position_winning_number = {}
-forth_position_winning_number = {}
-
-for row in winning_numbers:
-    for part in row["COMBINATIONS"][0]:
-        first_winning_number = part
+def count_position(list_of_winning_numbers, position):
+    position_winning_number = {}
+    
+    positions = (position - 1) * 2
+    
+    for row in list_of_winning_numbers:
+        winning_number = row["COMBINATIONS"][positions]
+        if winning_number in position_winning_number:
+            position_winning_number[winning_number] += 1
+        else:
+            position_winning_number[winning_number] = 1
+    print()
+    print(f"position {position} number of repeated from number 1 - 9")
+    print()
+    for number in position_winning_number:
+        winning_number = position_winning_number[number]
         
-        if first_winning_number in first_position_winning_number:
-            first_position_winning_number[first_winning_number] += 1
-        else:
-            first_position_winning_number[first_winning_number] = 1
-            
+        
+        print(f"The number {number} repeated {winning_number}")  
 
-for row in winning_numbers:
-    for part in row["COMBINATIONS"][2]:
-        second_winning_number = part
-        if second_winning_number in second_position_winning_number:
-            second_position_winning_number[second_winning_number] += 1
-        else:
-            second_position_winning_number[second_winning_number] = 1
 
-   
-for row in winning_numbers:
-    for part in row["COMBINATIONS"][4]:
-       third_winning_number = part
-       if third_winning_number in third_position_winning_number:
-           third_position_winning_number[third_winning_number] += 1
-       else:
-           third_position_winning_number[third_winning_number] = 1
+count_position(winning_numbers, 1)
+count_position(winning_numbers, 2)
+count_position(winning_numbers, 3)
+count_position(winning_numbers, 4)
 
-for row in winning_numbers:
-    for part in row["COMBINATIONS"][6]:
-        forth_winning_number = part
-        if forth_winning_number in forth_position_winning_number:
-            forth_position_winning_number[forth_winning_number] += 1
-        else:
-            forth_position_winning_number[forth_winning_number] =1
 
-print()
-print()
-print("First position number")
-print()
-for number in first_position_winning_number:
-    winning_number = first_position_winning_number[number]
-    
-    print(f"the number {number} repeated {winning_number}")
-    
-print()
-print()
-print("Second position number")
-print()
 
-for number in second_position_winning_number:
-    winning_number = second_position_winning_number[number]
-    print(f"the number {number} repeated {winning_number}")
-
-print()
-print()
-print("Third position number")
-print()
-
-for number in third_position_winning_number:
-    winning_number = third_position_winning_number[number]
-    print(f"the number {number} repeated {winning_number}")
-
-print()
-print()
-print("Fourth position number")
-print()
-
-for number in forth_position_winning_number:
-    winning_number = forth_position_winning_number[number]
-    
-    print(f"the number {number} repeated {winning_number}")
