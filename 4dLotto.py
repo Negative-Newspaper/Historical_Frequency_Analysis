@@ -54,10 +54,10 @@ for number in number_of_winning_numbers:
 def count_position(list_of_winning_numbers, position):
     position_winning_number = {}
     
-    positions = (position - 1) * 2
+    the_index = (position - 1) * 2
     
     for row in list_of_winning_numbers:
-        winning_number = row["COMBINATIONS"][positions]
+        winning_number = row["COMBINATIONS"][the_index]
         if winning_number in position_winning_number:
             position_winning_number[winning_number] += 1
         else:
