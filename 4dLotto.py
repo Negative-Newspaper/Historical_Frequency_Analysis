@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt
 
 winning_numbers = []
 
@@ -53,6 +54,7 @@ for number in number_of_winning_numbers:
 
 def count_position(list_of_winning_numbers, position):
     position_winning_number = {}
+    sorted_dictionary = {}
     
     the_index = (position - 1) * 2
     
@@ -62,20 +64,34 @@ def count_position(list_of_winning_numbers, position):
             position_winning_number[winning_number] += 1
         else:
             position_winning_number[winning_number] = 1
-    print()
-    print(f"position {position} number of repeated from number 1 - 9")
-    print()
-    for number in position_winning_number:
-        winning_number = position_winning_number[number]
-        
-        
-        print(f"The number {number} repeated {winning_number}")  
+            
+    #### sort the keys ####        
+    keys = (['0','1','2','3','4','5','6','7','8','9'])
+    for key in keys:
+        if not position_winning_number[key] == "":
+            sorted_dictionary[key] = position_winning_number[key]
 
+    return sorted_dictionary
 
-count_position(winning_numbers, 1)
-count_position(winning_numbers, 2)
-count_position(winning_numbers, 3)
-count_position(winning_numbers, 4)
+#### Printing chart ####
+
+def show_chart(position):
+    data = count_position(winning_numbers, position)
+
+    x_labels = (data.keys())
+    y_values = (data.values())
+
+    plt.figure(figsize=(8,6))
+    plt.bar(x_labels, y_values, color='skyblue', edgecolor='black')
+    plt.xlabel('Digits')
+    plt.ylabel('Frequency')
+
+    plt.show()
+    
+show_chart(1)
+show_chart(2)
+show_chart(3)
+show_chart(4)
 
 # sample di pa ako marunong mag cowork d2
 
