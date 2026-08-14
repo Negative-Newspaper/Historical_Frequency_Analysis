@@ -20,8 +20,7 @@ def load_and_validate_data(csv_data):
             else: 
                 if "" in row["COMBINATIONS"].split("-"):
                    validation = False
-                    
-                        
+                   continue
                 for part in row["COMBINATIONS"].split("-"):
                     if part.isalpha():
                         validation = False
@@ -102,6 +101,5 @@ show_chart(validated_csv, 1)
 show_chart(validated_csv, 2)
 show_chart(validated_csv, 3)
 show_chart(validated_csv, 4)
-
 # sample di pa ako marunong mag cowork d2
 
